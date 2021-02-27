@@ -8,7 +8,12 @@ public class Program {
         final int h = size / 2;
         float[] arr = new float[size];
 
+        float[] arr1 = new float[size];
+
         for (int i = 0;i<arr.length;i++) {
+            arr[i]=1;
+        }
+        for (int i = 0;i<arr1.length;i++) {
             arr[i]=1;
         }
 
@@ -19,13 +24,14 @@ public class Program {
         /** 1 thread*/
         System.out.println("1 thread");
         long b = System.currentTimeMillis();
-        MyThread single = new MyThread(arr);
+        MyThread single = new MyThread(arr1);
         single.start();
         try {
             single.join();
         } catch (InterruptedException e){
             e.printStackTrace();
         }
+        arr1 = single.getA();
         System.out.println(System.currentTimeMillis() - b);
 
 
